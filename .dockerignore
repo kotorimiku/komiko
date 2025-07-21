@@ -1,0 +1,9 @@
+node_modules
+web/node_modules
+*.log
+.git
+.gitignore
+Dockerfile
+build.sh
+komiko
+komiko.exe

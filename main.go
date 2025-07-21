@@ -13,7 +13,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//go:embed dist/*
+//go:embed web/dist/*
 var embeddedFiles embed.FS
 
 func main() {
@@ -23,12 +23,12 @@ func main() {
 
 	router.RegisterRoutes(r, db)
 
-	distFS, _ := fs.Sub(embeddedFiles, "dist")
+	distFS, _ := fs.Sub(embeddedFiles, "web/dist")
 	assetsFS, _ := fs.Sub(distFS, "assets")
 	r.StaticFS("/assets", http.FS(assetsFS))
 	r.StaticFileFS("/favicon.ico", "favicon.ico", http.FS(distFS))
 	r.NoRoute(func(c *gin.Context) {
-		data, err := embeddedFiles.ReadFile("dist/index.html")
+		data, err := embeddedFiles.ReadFile("web/dist/index.html")
 		if err != nil {
 			c.String(500, "index.html not found")
 			return

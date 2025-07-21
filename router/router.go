@@ -23,4 +23,5 @@ func RegisterRoutes(r *gin.Engine, db *gorm.DB) {
 	RegisterUserRoutes(authGroup, publicGroup, service)
 	RegisterProgressRoutes(authGroup, publicGroup, service)
 	RegisterTaskRoutes(authGroup, publicGroup)
+	RegisterVersionRoutes(publicGroup)
 }

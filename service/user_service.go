@@ -68,7 +68,7 @@ func (s *UserService) Login(user *model.User) (string, error) {
 
 func (s *UserService) CreateUser(currentUserID uint, user *model.User) error {
 	if currentUserID == 1 {
-		err := s.Register(user)
+		err := s.Create(user)
 		return err
 	}
 	currentUser, err := s.repo.GetByID(currentUserID)
@@ -79,7 +79,7 @@ func (s *UserService) CreateUser(currentUserID uint, user *model.User) error {
 		return fmt.Errorf("无权限创建用户")
 	}
 
-	err = s.Register(user)
+	err = s.Create(user)
 	return err
 }
 

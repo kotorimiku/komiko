@@ -1,0 +1,12 @@
+services:
+  komiko:
+    image: kotorimiku/komiko:latest
+    container_name: komiko
+    volumes:
+      - ./data:/app/data # /app/data must not be changed
+      - /comic:/comic
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - '6060:6060'
+    restart: unless-stopped
